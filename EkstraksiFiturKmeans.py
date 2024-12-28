@@ -134,8 +134,7 @@ def EkstrakFiturKMeans(image_path, padding=10, size=(225, 225)):
     # Preprocess the image (resize, grayscale, CLAHE, dilation)
     img_dilated = preproses_image(img, size)
 
-    # Process the image using Otsu thresholding and get the largest object mask and grayscale masked image
-    binary_mask, grayscale_masked = process_image_for_otsu(img_dilated, padding)
+    binary_mask, grayscale_masked = process_image_for_KMeans(img_dilated, padding)
 
     if binary_mask is None or grayscale_masked is None:
         print("No valid contours found.")

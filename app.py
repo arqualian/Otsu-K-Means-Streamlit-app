@@ -136,16 +136,15 @@ def main():
             features = process_image(temp_file_path, method=method)  # Pastikan fungsi ini digunakan
 
             if features is not None:
-                # Ubah ke format yang sesuai dengan model
-                scaled_features = scaler.transform(features)
+                    # Ubah ke format yang sesuai dengan model
+                    scaled_features = scaler.transform(features)
 
-                # Prediksi hasil
-                predicted_class = model.make_predictions(scaled_features.T)
-                predicted_label = label_encoder.inverse_transform([predicted_class[0]])
+                    # Prediksi hasil
+                    predicted_class = model.make_predictions(scaled_features.T)
 
-                # Tampilkan hasil prediksi
-                st.success(f"Predicted Label: {predicted_label[0]}")
-
+                    # Tampilkan nama jenis mangrove
+                    st.success(labels[int(predicted_class[0])])
+                    
             else:
                 st.error("Ekstraksi fitur gagal. Pastikan gambar sesuai dengan format yang diterima.")
 
